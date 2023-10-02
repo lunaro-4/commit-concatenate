@@ -1,10 +1,11 @@
 from django.shortcuts import render
+from .github_parcer import parse
 
 
-def exchange(request):
+def form_table(request):
     name = 'xddd'
     
-    data = [[0,0],[0,1],[1,0],[1,1]]
+    data = parse() 
 
     context = {
             'name':name,

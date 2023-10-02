@@ -2,11 +2,11 @@
 
 {% block content %}
 	<table>
-		{% for i in data %}
+		{% for key, values in data.items %}
 			<tr>
-			<th scope="row">
-			{% for j in i %}
-				<td headers="xdd"><span>{{ j }}</span></td>
+				<th scope="row" name={{ key }}>
+			{% for j in values %}
+			<td headers="xdd" date={{ j.0 }}><span>{{ j.1 }}</span></td>
 			{% endfor %}
 			</tr>
 		{% endfor %}

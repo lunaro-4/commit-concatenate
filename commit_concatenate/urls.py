@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import exchange
+from .views import form_table 
 
 
 urlpatterns = [
-        path('', exchange)
+        path('', form_table)
 ]
