@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<table>
+		{% for i in data %}
+			<tr>
+			<th scope="row">
+			{% for j in i %}
+				<td headers="xdd"><span>{{ j }}</span></td>
+			{% endfor %}
+			</tr>
+		{% endfor %}
+	</table>
+{% endblock %}
