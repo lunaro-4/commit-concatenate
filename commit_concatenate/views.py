@@ -21,18 +21,20 @@ def empty_data(time_range=DEFAULT_WEEK_RANGE):
     return empty_data
 
 
-def merge_data(data : dict, main_set=empty_data()):
-   #for i in main_set.keys():
-   #    if i in data.keys() and main_set[i][0] != main_set[i][0] + data[i]:
-   #        main_set[i][0] += data[i]
-    print(data)
-    main_set = {k: main_set.get(k, 1)[0] + data.get(k, 0) for k in set(main_set)}
-    #print(my_set)
-    #for i in main_set.keys():
-    #    main_set[i][0] = my_set[i]
-    for i in data.items():
-        if i[0] in main_set.keys():
-            main_set[i[0]].append(i[1])
+def merge_data(data : dict, main_set :dict):
+    if main_set == None:
+        main_set = empty_data()
+    for i in main_set.keys():
+        if i in data.keys():
+            main_set[i].append(data[i])
+        else:
+            main_set[i].append(0)
+    for i in main_set.keys():
+        if i in data.keys():
+            value = 0
+            for j in range(1, len(main_set[i])):
+                value += main_set[i][j] 
+            main_set[i][0] = value
     return main_set
 
 
@@ -55,14 +57,14 @@ def concat_to_weekdays(data_input):
     for i in range(len(tuple)):
         weekday = datetime.datetime.fromtimestamp(tuple[i][0]).weekday()
         date_string = datetime.datetime.fromtimestamp(tuple[i][0]).date()
-        data[weekday].append([str(date_string), tuple[i][1]])
+        data[weekday].append([str(date_string), tuple[i][1]]) #str(date_string)  #tuple[i][0]
     return data
 
 
 def form_table(request):
     name = 'xddd'
     data_github = github_parcer.parse()
-    data = merge_data(data_github)
+    data = merge_data(data_github, empty_data())
     data_leetcode = leetcode_parcer.parse()
     data = merge_data(data_leetcode, data)
     data = concat_to_weekdays(data)

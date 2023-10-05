@@ -1,0 +1,55 @@
+body {
+  /*background-color: lightblue;*/
+  font-family: verdana;
+}
+td {
+  padding: 0;
+}
+
+td::after {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  width: 1em;
+  height: 1em;
+  background-color: #eee;
+}
+
+td.amta::after,
+td.amtb::after,
+td.amtc::after,
+td.amtd::after {
+  display: none;
+}
+
+td {
+  position: relative;
+}
+
+td a {
+  display: block;
+  box-sizing: border-box;
+  width: 1em;
+  height: 1em;
+  background-color: #eee;
+  z-index: 1;
+  text-decoration: none;
+}
+
+
+td.amta a {
+  background-color: #c6e48b;
+}
+
+td.amtb a {
+  background-color: #7bc96f;
+}
+
+td.amtc a {
+  background- : #239a3b;
+}
+
+td.amtd a {
+  background-color: #196127;
+}
+

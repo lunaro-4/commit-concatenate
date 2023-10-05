@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6#dugc0@&ygn%3=)9at^uy+&rsq^y@)jkm&k0)ri*5exjqok7p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','yourdomain']
 
 
 # Application definition
@@ -113,6 +113,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'commit_concatenate/static'),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
