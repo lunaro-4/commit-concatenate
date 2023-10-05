@@ -3,7 +3,7 @@ import bs4
 import datetime
 import time
 
-URL = 'https://github.com/lunaro-4'
+DEFAULT_USER = 'lunaro-4'
 
 
 def get_data(html):
@@ -15,15 +15,17 @@ def get_data(html):
         date_in_unix = time.mktime(datetime.date(year, month, day).timetuple())
         # for some reason, github calendar grid does count 1 commit more than there actually is
         if int(date['data-level']) >0:
-            date['data-level'] = int(date['data-level'])-1
-            data[date_in_unix] = str(date['data-level'])
+            #date['data-level'] = int(date['data-level'])-1
+            data[date_in_unix] = int(date['data-level'])
         elif int(date['data-level']) == 0:
             pass
-
+    data_keys = list(data.keys())
+    for i in data_keys:
+        data[int(i)] = data.pop(i)
     return data
 
-def parse(url= URL):
-    html = requests.get(url)
+def parse(user: str = DEFAULT_USER)-> dict:
+    html = requests.get('https://github.com/' + user)
     if html.status_code == 200:
         data = get_data(html.text)
         return data

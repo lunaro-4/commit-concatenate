@@ -4,9 +4,9 @@
 	<table>
 		{% for key, values in data.items %}
 			<tr>
-				<th scope="row" name={{ key }}>
+				<th scope="row" weekday={{ key }}>
 			{% for j in values %}
-			<td headers="xdd" date={{ j.0 }}><span>{{ j.1 }}</span></td>
+			<td headers="xdd" date={{ j.0 }}><span>{{ j.0 }} === {{ j.1.0 }}  {{ j.1.1 }}, {{ j.1.2 }}</span></td>
 			{% endfor %}
 			</tr>
 		{% endfor %}
