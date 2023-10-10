@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="">
-<link rel="stylesheet" href="{% static 'css.css' %}">
   <head>
     <meta charset="utf-8">
     <title>commit-concatenate</title>
@@ -10,6 +9,8 @@
     <header></header>
     <main>
 		{% block content%}
+		<button><a href="login"><span>login<span></a></button>	
+		<button><a href="user"><span>Show Grid<span></a></button>	
 		{% endblock %}
 	</main>
     <footer></footer>

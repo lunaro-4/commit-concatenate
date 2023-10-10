@@ -1,7 +1,9 @@
 from django.urls import path
-from .views import form_table 
+from .views import * 
 
 
 urlpatterns = [
-        path('', form_table)
+        path('user/', show_tabel),
+        path('', show_home),
+        #path('user/', mk_tabel)
 ]
