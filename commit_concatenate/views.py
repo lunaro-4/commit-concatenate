@@ -3,14 +3,13 @@ from commit_concatenate.form_table import form_table
 
 
 def show_tabel(request):
-
     context = {
         'data': form_table(),
     }
     return render(request=request, template_name='grid.html', context=context)
 
-def show_home(request):
 
+def show_home(request):
     context = {
     }
-    return render(request=request, template_name='base.html', context=context)
+    return render(request=request, template_name='home.html', context=context)

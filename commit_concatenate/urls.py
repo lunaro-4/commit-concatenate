@@ -1,9 +1,8 @@
 from django.urls import path
-from .views import * 
+from .views import *
 
 
 urlpatterns = [
         path('user/', show_tabel),
         path('', show_home),
-        #path('user/', mk_tabel)
 ]

@@ -8,9 +8,18 @@
   <body>
     <header></header>
     <main>
+        <ul class="sidebar-nav">
+
+            <li><a href="/">Home</a></li>
+            {% if user.is_authenticated %}
+            <li>User: {{ user.get_username }}</li>
+            <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+            {% endif %}
+        </ul>
 		{% block content%}
-		<button><a href="login"><span>login<span></a></button>	
-		<button><a href="user"><span>Show Grid<span></a></button>	
+
 		{% endblock %}
 	</main>
     <footer></footer>

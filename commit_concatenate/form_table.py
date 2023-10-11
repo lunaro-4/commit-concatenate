@@ -4,9 +4,6 @@ from commit_concatenate import leetcode_parcer
 import datetime
 import time
 
-# https://codepen.io/aardrian/pen/xYZapG?editors=1100
-
-
 DEFAULT_WEEK_RANGE = 6
 
 
@@ -35,7 +32,7 @@ def merge_data(data : dict, main_set :dict):
         if i in data.keys():
             value = 0
             for j in range(1, len(main_set[i])):
-                value += main_set[i][j] 
+                value += main_set[i][j]
             main_set[i][0] = value
     return main_set
 
@@ -63,10 +60,12 @@ def concat_to_weekdays(data_input):
     return data
 
 
-def form_table() -> dict:
+def form_table():
     data_github = github_parcer.parse()
     data = merge_data(data_github, empty_data())
     data_leetcode = leetcode_parcer.parse()
     data = merge_data(data_leetcode, data)
     data = concat_to_weekdays(data)
     return data
+
+
