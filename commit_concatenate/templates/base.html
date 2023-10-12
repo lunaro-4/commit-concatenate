@@ -4,23 +4,31 @@
   <head>
     <meta charset="utf-8">
     <title>commit-concatenate</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"/>
   </head>
   <body>
     <header></header>
     <main>
-        <ul class="sidebar-nav">
-
-            <li><a href="/">Home</a></li>
-            {% if user.is_authenticated %}
-            <li>User: {{ user.get_username }}</li>
-            <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
-            {% else %}
-            <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
-            {% endif %}
-        </ul>
-		{% block content%}
-
-		{% endblock %}
+        <div class="container-fluid">
+            <div class="row">
+            <div class="col-sm-2">
+        <link rel="stylesheet" href="{% static 'base.css' %}">
+            <ul class="sidebar-nav">
+                <li><a href={% url 'index' %}>Home</a></li>
+                {% if user.is_authenticated %}
+                <li>User: {{ user.get_username }}</li>
+                <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+                {% endif %}
+            </ul>
+            </div>
+		<div class="col-sm-5">{% block content%} {% endblock %}</div>
+            </div>
+        </div>
 	</main>
     <footer></footer>
   </body>
