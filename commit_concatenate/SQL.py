@@ -1,5 +1,6 @@
 from sqlalchemy.orm import declarative_base
 from sqlalchemy import String, Integer, Float, Column, ForeignKey, create_engine
+import sqlalchemy
 
 Base = declarative_base()
 
@@ -22,7 +23,8 @@ class Grids(Base):
     user_id = Column(Integer, ForeignKey("users.id"))
 
 
-engine = create_engine("mysql+pymysql://root:root@localhost:3306/app")
+#engine = create_engine("mysql+pymysql://root:root@localhost:3306/app")
+engine = sqlalchemy.create_engine("sqlite:///db.sqlite3")
 
 
 Base.metadata.create_all(engine)
