@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+
+<form method="post" action="{% url 'reg' %}">
+	{% csrf_token %}
+	<table>
+		<tr>
+			<td><label >uname </label></td>
+			<td><input id="username" type="text" name="username" value="{{ username }}"></td>
+		</tr>
+		<tr>
+			<td><label >GitHub_ID </label></td>
+			<td><input id="github_id" type="text" name="github_id" value="{{ github_id }}"></td>
+		</tr>
+		<tr>
+			<td><label >pass </label></td>
+			<td><input id="password1" type="text" name="password1" value="{{ password1 }}"></td>
+		</tr>
+		<tr>
+			<td><label >pass rep </label></td>
+			<td><input id="password2" type="text" name="password2" value="{{ password2 }}"></td>
+
+		</tr>
+		<tr>
+			<td><input type="submit" value="register"></td>
+			<td><input type="hidden" name="next" value="{{ next }}"></td>
+		</tr>
+	</table>
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a href="{#% url 'password_reset' %#}">Lost password?</a></p>
+{% endblock %}

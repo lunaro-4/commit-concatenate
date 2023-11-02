@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['127.0.0.1','yourdomain']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -101,6 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = "commit_concatenate.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
