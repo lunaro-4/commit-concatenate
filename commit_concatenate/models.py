@@ -14,6 +14,9 @@ class User(AbstractUser):
         self.github_id=github_id
         self.save()
 
+    def get_github_id(self):
+        return str(self.github_id)
+
 
 def run_xd():
     newuser = User()

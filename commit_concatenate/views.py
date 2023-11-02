@@ -6,9 +6,9 @@ from commit_concatenate.models import User
 from django.urls import reverse
 
 
-def show_tabel(request):
+def show_table(request):
     context = {
-        'data': form_table(),
+        'data': form_table(request.user.github_id),
     }
     return render(request=request, template_name='grid.html', context=context)
 
@@ -19,8 +19,12 @@ def show_home(request):
     return render(request=request, template_name='home.html', context=context)
 
 
-# def register():
-#     pass
+
+
+
+
+
+
 
 
 def register(request):
@@ -31,6 +35,8 @@ def register(request):
         username = data.get("username")
         password1, password2 = data.get("password1"), data.get("password2")
         github_id = data.get("github_id")
+        if github_id is None:
+            github_id=None
         if username is None:
             return HttpResponse("<h3><a href=''>Введите имя пользователя</a></h3>")
         elif password1 is None or password2 is None:
@@ -48,14 +54,11 @@ def login_form(request):
         return render(request, "login.html")
     else:
         data = request.POST
-        # try:
         user = authenticate(request, username=data.get('username'), password=data.get('password'))
         if user is None:
             return HttpResponse("<h3><a href=''>Пользователь с таким логином и паролем не найден</a></h3><br>")
         login(request,user)
         return HttpResponseRedirect(reverse('index'))
-        # except KeyError:
-        #     return HttpResponse("<h3>Заполните все поля</h3>")
 
 
 def logout_form(request):

@@ -60,8 +60,8 @@ def concat_to_weekdays(data_input):
     return data
 
 
-def form_table():
-    data_github = github_parcer.parse()
+def form_table(github_id):
+    data_github = github_parcer.parse(str(github_id))
     data = merge_data(data_github, empty_data())
     data_leetcode = leetcode_parcer.parse()
     data = merge_data(data_leetcode, data)
