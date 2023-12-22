@@ -1,6 +1,10 @@
 import urllib.request
 import json
 
+
+#### returns data in dictionary of {date_in_unix : number_of_commits}; size is tied to № of active days
+
+
 DEFAULT_URL = 'https://leetcode-api-faisalshohag.vercel.app/lunaro-4'
 
 def parse(user: str = 'lunaro-4') -> dict:

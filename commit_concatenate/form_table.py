@@ -25,7 +25,7 @@ def merge_data(data : dict, main_set :dict):
         main_set = empty_data()
     for i in main_set.keys():
         if i in data.keys():
-            main_set[i].append(data[i])
+           main_set[i].append(int(data[i]))
         else:
             main_set[i].append(0)
     for i in main_set.keys():

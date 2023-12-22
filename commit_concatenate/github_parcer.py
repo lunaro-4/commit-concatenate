@@ -3,6 +3,8 @@ import bs4
 import datetime
 import time
 
+#### returns data in dictionary of {date_in_unix : number_of_commits}; size is tied to № of active days
+
 DEFAULT_USER = 'lunaro-4'
 
 
