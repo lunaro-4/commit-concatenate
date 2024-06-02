@@ -10,8 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+from contextlib import asynccontextmanager
 from pathlib import Path
 import os
+from sqlalchemy import URL
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
+
+from sqlalchemy.orm.session import sessionmaker
+
+from sql_app.database_access import session_manager
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +33,7 @@ SECRET_KEY = 'django-insecure-6#dugc0@&ygn%3=)9at^uy+&rsq^y@)jkm&k0)ri*5exjqok7p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','yourdomain']
+ALLOWED_HOSTS = ['127.0.0.1','yourdomain', 'localhost']
 
 
 # Application definition
@@ -81,7 +88,16 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+@asynccontextmanager
+async def db_init():
+    await session_manager.create_db_and_tables()
+    yield
+    if session_manager.engine is not None:
+        await session_manager.close()
 
+DB_SESSION_MANAGER = session_manager
+session_manager.init("sqlite+aiosqlite:///db.sqlite3")
+db_init()
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

@@ -2,3 +2,6 @@
 /test.py
 /.idea/
 /init.sh
+*/__pycache__/*
+__pycache__
+.venv

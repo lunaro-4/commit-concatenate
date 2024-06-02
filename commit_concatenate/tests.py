@@ -51,12 +51,27 @@ class TabelesTestCase(TestCase):
                     1699963200 :[1]
                 }
 
+        self.test_dict_weekend_days = {0: [1700481600, 1701086400, 1701691200, 1702296000, 1702900800], 
+                                    1: [1699963200, 1700568000, 1701172800, 1701777600, 1702382400, 1702987200], 
+                                    2: [1700049600, 1700654400, 1701259200, 1701864000, 1702468800, 1703073600], 
+                                    3: [1700136000, 1700740800, 1701345600, 1701950400, 1702555200, 1703160000], 
+                                    4: [1700222400, 1700827200, 1701432000, 1702036800, 1702641600], 
+                                    5: [1700308800, 1700913600, 1701518400, 1702123200, 1702728000], 
+                                    6: [1700395200, 1701000000, 1701604800, 1702209600, 1702814400]}
+
+
+
     def test_table_merge(self):
         self.test_table2= {} 
-        # self.test_table3 = self.test_table1.copy()
-        self.assertEqual(form_table.merge_data(self.test_table2,self.test_table1), self.test_table1)
-        # self.test_table1 = self.test_table3.copy()
+        self.test_table3 = form_table.merge_data(self.test_table2,self.test_table1)
+        self.assertEqual(self.test_table3, self.test_table1)
+        # self.assertEqual(form_table.concat_to_weekdays(self.test_table1),self.test_dict_weekend_days)
+        
+
+        
 
     def test_table_merge_errors(self):
         with self.assertRaises(TypeError):
             data = form_table.merge_data(self.test_table1,self.test_table1)
+
+

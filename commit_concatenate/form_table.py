@@ -23,6 +23,8 @@ def empty_data(time_range=DEFAULT_WEEK_RANGE):
 def merge_data(data : dict, main_set :dict):
     if main_set == None:
         main_set = empty_data()
+    if data == None:
+        return main_set
     for i in main_set.keys():
         if i in data.keys():
            main_set[i].append(int(data[i]))
@@ -61,6 +63,7 @@ def concat_to_weekdays(data_input):
 
 
 def form_table(github_id):
+    #print(github_id)
     data_github = github_parcer.parse(str(github_id))
     data = merge_data(data_github, empty_data())
     data_leetcode = leetcode_parcer.parse()
