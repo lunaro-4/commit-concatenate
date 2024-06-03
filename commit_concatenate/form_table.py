@@ -1,13 +1,11 @@
 
-from commit_concatenate import github_parcer
-from commit_concatenate import leetcode_parcer
 import datetime
 import time
 
 DEFAULT_WEEK_RANGE = 6
 
 
-def empty_data(time_range=DEFAULT_WEEK_RANGE):
+def empty_data(time_range: int):
     base = datetime.datetime.today()
     date_list = []
     for i in range(time_range * 7):
@@ -20,9 +18,9 @@ def empty_data(time_range=DEFAULT_WEEK_RANGE):
     return empty_data
 
 
-def merge_data(data : dict, main_set :dict):
+def merge_data(data: dict,  time_range: int, main_set: dict | None = None):
     if main_set == None:
-        main_set = empty_data()
+        main_set = empty_data(time_range)
     if data == None:
         return main_set
     for i in main_set.keys():
@@ -62,13 +60,5 @@ def concat_to_weekdays(data_input):
     return data
 
 
-def form_table(github_id):
-    #print(github_id)
-    data_github = github_parcer.parse(str(github_id))
-    data = merge_data(data_github, empty_data())
-    data_leetcode = leetcode_parcer.parse()
-    data = merge_data(data_leetcode, data)
-    data = concat_to_weekdays(data)
-    return data
 
 

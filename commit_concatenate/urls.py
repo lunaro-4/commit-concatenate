@@ -9,4 +9,6 @@ urlpatterns = [
         path('login/', login_form, name='login'),
         path('logout', logout_form, name='logout'),
 
+        path('api/github', get_github)
+
 ]
