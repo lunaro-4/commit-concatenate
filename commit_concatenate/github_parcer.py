@@ -1,45 +1,105 @@
 import requests
-import bs4
 import datetime
-import time
+import multiprocessing
+import concurrent.futures
+import more_itertools
 
-#### returns data in dictionary of {date_in_unix : number_of_commits}; size is tied to № of active days
+#### returns data in dictionary of {datetime.date : number_of_commits}; size is tied to № of active days
 
-
-
-## TODO : remake, to make use of github api :
-# https://api.github.com/users/lunaro-4/events?per_page=100&page=2
-# https://docs.github.com/en/rest/activity/events?apiVersion=2022-11-28#list-events-for-the-authenticated-user
 
 DEFAULT_USER = 'lunaro-4'
+BASE_URL = 'https://api.github.com/users/%s/events?per_page=100&page=%d'
+
+headers = {'Accept': 'application/vnd.github+json'}
+def parse_commit_date(URL: str):
+    try:
+        response = requests.get(URL, headers=headers)
+        if response.status_code == 200:
+            # print(response.json().get('commit').get('author').get('date'))
+            return response.json().get('commit').get('author').get('date')
+    except:
+        return ''
 
 
-def get_data(html):
-    soup=bs4.BeautifulSoup(html,'html.parser')
-    commits = soup.find_all('td', class_='ContributionCalendar-day')
+# 2024-03-28T12:36:15Z
+
+def git_to_datetime(git_date: str) -> datetime.date | None:
+    git_date_fixed = git_date[:git_date.rfind("T")]
+    try:
+        unix_date = datetime.datetime.strptime(git_date_fixed, '%Y-%m-%d').date()
+    except ValueError:
+        return None
+    return unix_date
+
+
+def get_data(json) -> dict:
+    dates_list = []
+    executor = concurrent.futures.ProcessPoolExecutor(10)
+    tasks = parse_links_from_json(json)
+
+    # futures = [executor.submit(parse_commit_date, group) for group in more_itertools.chunked(tasks, 5)]
+    dates_list = [executor.submit(parse_commit_date, commit) for commit in tasks]
+    concurrent.futures.wait(dates_list)
+    result = {}
+    for date in dates_list:
+        # await date
+        date = git_to_datetime(str(date))
+        if date == None:
+            continue
+        if date in result.keys():
+            result[date] += 1
+        else:
+            result[date] = 1
+    return result
+
+def merge_dicts(dict1: dict, dict2: dict):
+    for key in dict1.keys():
+        if key in dict2.keys():
+            dict2[key] += dict1[key]
+        else:
+            dict2[key] = dict1[key]
+
+def parse_links_from_json(json):
+    links = []
+    for event in json:
+        if 'commits' in event.get('payload').keys() :
+            for commit in event.get('payload').get('commits'):
+                links.append(commit.get('url'))
+    return links
+
+def parse_page_response(user: str | None,
+                       page: int | None,
+                        request_session: requests.Session | None,
+                       URL: str = BASE_URL):
+    if request_session != None:
+        response = request_session.get(URL)
+    else:
+        response = requests.get(URL % (user, page), headers=headers)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print('Error', f'html status: {response.status_code}')
+        raise Exception
+
+def parse(user: str = DEFAULT_USER, URL: str = BASE_URL)-> dict:
+    page = 1
+    response = requests.get(URL % (user, page), headers=headers)
+    if response.status_code != 200:
+        print('Error', f'html status: {response.status_code}')
+        return {}
+    json = response.json()
     data = dict()
-    for date in commits:
-        year, month, day = (int(x) for x in date['data-date'].split('-'))
-        date_in_unix = time.mktime(datetime.date(year, month, day).timetuple())
-        # for some reason, github calendar grid does count 1 commit more than there actually is
-        if int(date['data-level']) >0:
-            #date['data-level'] = int(date['data-level'])-1
-            data[date_in_unix] = int(date['data-level'])
-        elif int(date['data-level']) == 0:
-            pass
-    data_keys = list(data.keys())
-    for i in data_keys:
-        data[int(i)] = data.pop(i)
+    while len(json) > 0:
+        new_data = get_data(json)
+        merge_dicts(new_data, data)
+        page += 1
+        json = parse_page_response(user=user, page=page, URL=URL)
     return data
 
-def parse(user: str = DEFAULT_USER)-> dict:
-    html = requests.get('https://github.com/' + user)
-    if html.status_code == 200:
-        data = get_data(html.text)
-        return data
-    else:
-        print('Error', f'html status: {html.status_code}')
-        return {}
+# async def print_this():
+#     this = await parse()
+#     print(this)
 
 if __name__ == '__main__':
-    print(parse())
+    result = parse()
+    print(result)
