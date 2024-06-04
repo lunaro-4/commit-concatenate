@@ -51,6 +51,13 @@ def show_home(request):
 
 def get_github(request):
     response = github_parcer.parse()
+    dates = list(response.keys())
+    for date in dates:
+        if type(date) != datetime.date:
+            print(type(date), '  ', date)
+            raise Exception
+        response[date.strftime("%Y-%m-%d")] = response[date]
+        response.pop(date)
     return JsonResponse(response)
 
 

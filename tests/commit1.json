@@ -1,0 +1,122 @@
+{
+  "sha": "2ca6925dcf04193601e47cc4104365ad7e3a2470",
+  "node_id": "C_kwDOL_F-vNoAKDJjYTY5MjVkY2YwNDE5MzYwMWU0N2NjNDEwNDM2NWFkN2UzYTI0NzA",
+  "commit": {
+    "author": {
+      "name": "lunaro-4",
+      "email": "pavelike@gmail.com",
+      "date": "2024-05-26T21:18:51Z"
+    },
+    "committer": {
+      "name": "lunaro-4",
+      "email": "pavelike@gmail.com",
+      "date": "2024-05-26T21:18:51Z"
+    },
+    "message": "style(tests): apply flake8 changes",
+    "tree": {
+      "sha": "89990aaca9589c89e1d4da00bd6025f6ea5f2ff6",
+      "url": "https://api.github.com/repos/lunaro-4/metal-roll-backend/git/trees/89990aaca9589c89e1d4da00bd6025f6ea5f2ff6"
+    },
+    "url": "https://api.github.com/repos/lunaro-4/metal-roll-backend/git/commits/2ca6925dcf04193601e47cc4104365ad7e3a2470",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null
+    }
+  },
+  "url": "https://api.github.com/repos/lunaro-4/metal-roll-backend/commits/2ca6925dcf04193601e47cc4104365ad7e3a2470",
+  "html_url": "https://github.com/lunaro-4/metal-roll-backend/commit/2ca6925dcf04193601e47cc4104365ad7e3a2470",
+  "comments_url": "https://api.github.com/repos/lunaro-4/metal-roll-backend/commits/2ca6925dcf04193601e47cc4104365ad7e3a2470/comments",
+  "author": {
+    "login": "lunaro-4",
+    "id": 64870947,
+    "node_id": "MDQ6VXNlcjY0ODcwOTQ3",
+    "avatar_url": "https://avatars.githubusercontent.com/u/64870947?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/lunaro-4",
+    "html_url": "https://github.com/lunaro-4",
+    "followers_url": "https://api.github.com/users/lunaro-4/followers",
+    "following_url": "https://api.github.com/users/lunaro-4/following{/other_user}",
+    "gists_url": "https://api.github.com/users/lunaro-4/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/lunaro-4/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/lunaro-4/subscriptions",
+    "organizations_url": "https://api.github.com/users/lunaro-4/orgs",
+    "repos_url": "https://api.github.com/users/lunaro-4/repos",
+    "events_url": "https://api.github.com/users/lunaro-4/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/lunaro-4/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "lunaro-4",
+    "id": 64870947,
+    "node_id": "MDQ6VXNlcjY0ODcwOTQ3",
+    "avatar_url": "https://avatars.githubusercontent.com/u/64870947?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/lunaro-4",
+    "html_url": "https://github.com/lunaro-4",
+    "followers_url": "https://api.github.com/users/lunaro-4/followers",
+    "following_url": "https://api.github.com/users/lunaro-4/following{/other_user}",
+    "gists_url": "https://api.github.com/users/lunaro-4/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/lunaro-4/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/lunaro-4/subscriptions",
+    "organizations_url": "https://api.github.com/users/lunaro-4/orgs",
+    "repos_url": "https://api.github.com/users/lunaro-4/repos",
+    "events_url": "https://api.github.com/users/lunaro-4/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/lunaro-4/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "061c704040fd2eb2f1bb42069f63626be69de37d",
+      "url": "https://api.github.com/repos/lunaro-4/metal-roll-backend/commits/061c704040fd2eb2f1bb42069f63626be69de37d",
+      "html_url": "https://github.com/lunaro-4/metal-roll-backend/commit/061c704040fd2eb2f1bb42069f63626be69de37d"
+    }
+  ],
+  "stats": {
+    "total": 29,
+    "additions": 16,
+    "deletions": 13
+  },
+  "files": [
+    {
+      "sha": "a913efc85c0c7fb94be847ad2c4a9acef11d4301",
+      "filename": "tests/conftest.py",
+      "status": "modified",
+      "additions": 5,
+      "deletions": 8,
+      "changes": 13,
+      "blob_url": "https://github.com/lunaro-4/metal-roll-backend/blob/2ca6925dcf04193601e47cc4104365ad7e3a2470/tests%2Fconftest.py",
+      "raw_url": "https://github.com/lunaro-4/metal-roll-backend/raw/2ca6925dcf04193601e47cc4104365ad7e3a2470/tests%2Fconftest.py",
+      "contents_url": "https://api.github.com/repos/lunaro-4/metal-roll-backend/contents/tests%2Fconftest.py?ref=2ca6925dcf04193601e47cc4104365ad7e3a2470",
+      "patch": "@@ -1,7 +1,5 @@\n-from contextlib import ExitStack, asynccontextmanager\n-import typing\n+from contextlib import ExitStack\n import pytest\n-import asyncio\n from fastapi.testclient import TestClient\n \n from sql_app.database import get_db, session_manager\n@@ -16,7 +14,8 @@\n @pytest.fixture(autouse=True)\n def app():\n     with ExitStack():\n-        yield init_app(prod_db = False)\n+        yield init_app(prod_db=False)\n+\n \n @pytest.fixture\n def client(app):\n@@ -30,17 +29,15 @@ async def connection_test():\n     await session_manager.close()\n \n \n-\n-\n @pytest.fixture(scope=\"function\", autouse=True)\n async def session_override(app, connection_test):\n     async def get_db_override():\n         yield session_manager.session()\n     app.dependency_overrides[get_db] = get_db_override\n \n+\n @pytest.fixture(scope=\"function\", autouse=True)\n async def create_tables(connection_test, session_manager):\n-    connection = session_manager.connect() \n+    connection = session_manager.connect()\n     await session_manager.drop_db_and_tables(connection)\n     await session_manager.create_db_and_tables(connection)\n-"
+    },
+    {
+      "sha": "b6f52fbeac8fabfe2b9f73113695ce43ced6a03d",
+      "filename": "tests/manual_requests.py",
+      "status": "modified",
+      "additions": 0,
+      "deletions": 1,
+      "changes": 1,
+      "blob_url": "https://github.com/lunaro-4/metal-roll-backend/blob/2ca6925dcf04193601e47cc4104365ad7e3a2470/tests%2Fmanual_requests.py",
+      "raw_url": "https://github.com/lunaro-4/metal-roll-backend/raw/2ca6925dcf04193601e47cc4104365ad7e3a2470/tests%2Fmanual_requests.py",
+      "contents_url": "https://api.github.com/repos/lunaro-4/metal-roll-backend/contents/tests%2Fmanual_requests.py?ref=2ca6925dcf04193601e47cc4104365ad7e3a2470",
+      "patch": "@@ -1,6 +1,5 @@\n import requests\n \n \n-\n with requests.get(\"/\") as r:\n     pass"
+    },
+    {
+      "sha": "986c16e0c63db06cae3d5f6c74fbd0f9b3750bf5",
+      "filename": "tests/test_main.py",
+      "status": "modified",
+      "additions": 11,
+      "deletions": 4,
+      "changes": 15,
+      "blob_url": "https://github.com/lunaro-4/metal-roll-backend/blob/2ca6925dcf04193601e47cc4104365ad7e3a2470/tests%2Ftest_main.py",
+      "raw_url": "https://github.com/lunaro-4/metal-roll-backend/raw/2ca6925dcf04193601e47cc4104365ad7e3a2470/tests%2Ftest_main.py",
+      "contents_url": "https://api.github.com/repos/lunaro-4/metal-roll-backend/contents/tests%2Ftest_main.py?ref=2ca6925dcf04193601e47cc4104365ad7e3a2470",
+      "patch": "@@ -1,18 +1,25 @@\n import pytest\n-import asyncio\n \n \n pytest_plugins = ('pytest_asyncio')\n \n+\n @pytest.mark.asyncio\n async def test_read_main(client, create_tables):\n     response = client.get(\"/\")\n     assert response.status_code == 200\n \n-    post_request = { \"weight\" : 12, \"length\" : 13, \"add_date\" : None, \"del_date\" : None }\n+    post_request = {\"weight\": 12,\n+                    \"length\": 13,\n+                    \"add_date\": None,\n+                    \"del_date\": None}\n     response = client.post(\"/coil\", json=post_request)\n-    \n+\n     assert response.status_code == 200\n     response.url\n-    post_request = { \"id\" : 1, \"weight\" : 12, \"length\" : 13, \"add_date\" : None, \"del_date\" : None }\n+    post_request = {\"id\": 1,\n+                    \"weight\": 12,\n+                    \"length\": 13,\n+                    \"add_date\": None,\n+                    \"del_date\": None}\n     assert response.json() == post_request"
+    }
+  ]
+}

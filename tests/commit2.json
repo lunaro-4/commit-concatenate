@@ -1,0 +1,103 @@
+{
+  "sha": "ab13a56b4a9809ae60a04ead82c66e5d5f69e02c",
+  "node_id": "C_kwDOL_F-vNoAKGFiMTNhNTZiNGE5ODA5YWU2MGEwNGVhZDgyYzY2ZTVkNWY2OWUwMmM",
+  "commit": {
+    "author": {
+      "name": "lunaro-4",
+      "email": "pavelike@gmail.com",
+      "date": "2021-02-23T21:19:06Z"
+    },
+    "committer": {
+      "name": "lunaro-4",
+      "email": "pavelike@gmail.com",
+      "date": "2021-02-23T21:19:06Z"
+    },
+    "message": "Merge branch 'main' of github.com:lunaro-4/metal-roll-backend",
+    "tree": {
+      "sha": "a5b6cda28ce07ef5bb6cb0327e37a8ea10e59bd2",
+      "url": "https://api.github.com/repos/lunaro-4/metal-roll-backend/git/trees/a5b6cda28ce07ef5bb6cb0327e37a8ea10e59bd2"
+    },
+    "url": "https://api.github.com/repos/lunaro-4/metal-roll-backend/git/commits/ab13a56b4a9809ae60a04ead82c66e5d5f69e02c",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null
+    }
+  },
+  "url": "https://api.github.com/repos/lunaro-4/metal-roll-backend/commits/ab13a56b4a9809ae60a04ead82c66e5d5f69e02c",
+  "html_url": "https://github.com/lunaro-4/metal-roll-backend/commit/ab13a56b4a9809ae60a04ead82c66e5d5f69e02c",
+  "comments_url": "https://api.github.com/repos/lunaro-4/metal-roll-backend/commits/ab13a56b4a9809ae60a04ead82c66e5d5f69e02c/comments",
+  "author": {
+    "login": "lunaro-4",
+    "id": 64870947,
+    "node_id": "MDQ6VXNlcjY0ODcwOTQ3",
+    "avatar_url": "https://avatars.githubusercontent.com/u/64870947?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/lunaro-4",
+    "html_url": "https://github.com/lunaro-4",
+    "followers_url": "https://api.github.com/users/lunaro-4/followers",
+    "following_url": "https://api.github.com/users/lunaro-4/following{/other_user}",
+    "gists_url": "https://api.github.com/users/lunaro-4/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/lunaro-4/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/lunaro-4/subscriptions",
+    "organizations_url": "https://api.github.com/users/lunaro-4/orgs",
+    "repos_url": "https://api.github.com/users/lunaro-4/repos",
+    "events_url": "https://api.github.com/users/lunaro-4/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/lunaro-4/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "lunaro-4",
+    "id": 64870947,
+    "node_id": "MDQ6VXNlcjY0ODcwOTQ3",
+    "avatar_url": "https://avatars.githubusercontent.com/u/64870947?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/lunaro-4",
+    "html_url": "https://github.com/lunaro-4",
+    "followers_url": "https://api.github.com/users/lunaro-4/followers",
+    "following_url": "https://api.github.com/users/lunaro-4/following{/other_user}",
+    "gists_url": "https://api.github.com/users/lunaro-4/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/lunaro-4/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/lunaro-4/subscriptions",
+    "organizations_url": "https://api.github.com/users/lunaro-4/orgs",
+    "repos_url": "https://api.github.com/users/lunaro-4/repos",
+    "events_url": "https://api.github.com/users/lunaro-4/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/lunaro-4/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "2ca6925dcf04193601e47cc4104365ad7e3a2470",
+      "url": "https://api.github.com/repos/lunaro-4/metal-roll-backend/commits/2ca6925dcf04193601e47cc4104365ad7e3a2470",
+      "html_url": "https://github.com/lunaro-4/metal-roll-backend/commit/2ca6925dcf04193601e47cc4104365ad7e3a2470"
+    },
+    {
+      "sha": "49513f7a6fde91782460fd35f607601ee406fb2b",
+      "url": "https://api.github.com/repos/lunaro-4/metal-roll-backend/commits/49513f7a6fde91782460fd35f607601ee406fb2b",
+      "html_url": "https://github.com/lunaro-4/metal-roll-backend/commit/49513f7a6fde91782460fd35f607601ee406fb2b"
+    }
+  ],
+  "stats": {
+    "total": 31,
+    "additions": 11,
+    "deletions": 20
+  },
+  "files": [
+    {
+      "sha": "5a78f71b20cf67430198f58f9048920a4e3972e5",
+      "filename": ".github/workflows/main.yml",
+      "status": "modified",
+      "additions": 11,
+      "deletions": 20,
+      "changes": 31,
+      "blob_url": "https://github.com/lunaro-4/metal-roll-backend/blob/ab13a56b4a9809ae60a04ead82c66e5d5f69e02c/.github%2Fworkflows%2Fmain.yml",
+      "raw_url": "https://github.com/lunaro-4/metal-roll-backend/raw/ab13a56b4a9809ae60a04ead82c66e5d5f69e02c/.github%2Fworkflows%2Fmain.yml",
+      "contents_url": "https://api.github.com/repos/lunaro-4/metal-roll-backend/contents/.github%2Fworkflows%2Fmain.yml?ref=ab13a56b4a9809ae60a04ead82c66e5d5f69e02c",
+      "patch": "@@ -1,26 +1,17 @@\n-name: Lint\n+name: flake8 Lint\n \n-on:\n-  push:\n-    paths:\n-      - '*.py'\n+on: [push, pull_request]\n \n jobs:\n-  flake8_py3:\n+  flake8-lint:\n     runs-on: ubuntu-latest\n+    name: Lint\n     steps:\n-      - name: Setup Python\n-        uses: actions/setup-python@v1\n+      - name: Check out source repository\n+        uses: actions/checkout@v3\n+      - name: Set up Python environment\n+        uses: actions/setup-python@v4\n         with:\n-          python-version: 3.7.4\n-          architecture: x64\n-      - name: Checkout PyTorch\n-        uses: actions/checkout@master\n-      - name: Install flake8\n-        run: pip install flake8\n-      - name: Run flake8\n-        uses: suo/flake8-github-action@releases/v1\n-        with:\n-          checkName: 'flake8_py3'   # NOTE: this needs to be the same as the job name\n-        env:\n-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n+          python-version: \"3.11\"\n+      - name: flake8 Lint\n+        uses: py-actions/flake8@v2"
+    }
+  ]
+}

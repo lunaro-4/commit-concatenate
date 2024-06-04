@@ -33,7 +33,7 @@ SECRET_KEY = 'django-insecure-6#dugc0@&ygn%3=)9at^uy+&rsq^y@)jkm&k0)ri*5exjqok7p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','yourdomain', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0']
 
 
 # Application definition
@@ -151,4 +151,29 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 NOSE_ARGS = ['--nocapture',
              '--nologcapture',]
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "file": {
+                "class": "logging.FileHandler",
+                "filename": os.path.join(BASE_DIR, "log.log")
+            },
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+    "loggers": {
+        "": {
+            "handlers": ["console", "file"],
+            "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
+            "propagate": True,
+        },
+    },
+}
 
