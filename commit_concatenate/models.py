@@ -1,17 +1,16 @@
-from django.contrib.auth.base_user import AbstractBaseUser
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    username = models.CharField(max_length=20,unique=True)
+    username = models.CharField(max_length=20, unique=True)
     first_name = None
     github_id = models.CharField(max_length=20)
 
     def create_user(self, username, password, github_id):
-        self.username=username
+        self.username = username
         self.set_password(password)
-        self.github_id=github_id
+        self.github_id = github_id
         self.save()
 
     def get_github_id(self):
@@ -25,11 +24,6 @@ def run_xd():
     ethan_user = User.objects.filter(username="ethanj23").first()
     print(ethan_user.Full_name)
     print(ethan_user.password)
-
-
-
-
-
 
 
 # run_xd()

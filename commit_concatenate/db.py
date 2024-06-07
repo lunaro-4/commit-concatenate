@@ -1,9 +1,8 @@
 import sqlalchemy
 from sqlalchemy.orm import sessionmaker
 import SQL
-import sqlite3
 
-#engine = sqlalchemy.create_engine("mysql+pymysql://root:root@localhost:3306/app")
+# engine = sqlalchemy.create_engine("mysql+pymysql://root:root@localhost:3306/app")
 engine = sqlalchemy.create_engine("sqlite:///../db.sqlite3")
 session = sessionmaker(bind=engine)
 connection = session()
@@ -14,7 +13,3 @@ goods = connection.query(SQL.Users).all()
 print(goods)
 res = connection.execute(sqlalchemy.text("SELECT * from users"))
 print(res.fetchall())
-
-
-
-
