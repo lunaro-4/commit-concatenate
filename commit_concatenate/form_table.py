@@ -4,20 +4,21 @@ import time
 DEFAULT_WEEK_RANGE = 6
 
 
-def empty_data(time_range: int):
+def empty_data(time_range: int) -> dict:
     base = datetime.datetime.today()
     date_list = []
     for i in range(time_range * 7):
         fixed_date = base - datetime.timedelta(days=i)
-        fixed_date = fixed_date.date().timetuple()
-        date_list.append(int(time.mktime(fixed_date)))
+        fixed_date_tuple = fixed_date.date().timetuple()
+        date_list.append(int(time.mktime(fixed_date_tuple)))
     empty_data = {}
     for i in date_list:
         empty_data[i] = [0]
     return empty_data
 
 
-def merge_data(data: dict, time_range: int, main_set: dict | None = None):
+def merge_data(data: dict, time_range: int,
+               main_set: dict | None = None) -> dict:
     if main_set is None:
         main_set = empty_data(time_range)
     if data is None:
@@ -36,11 +37,11 @@ def merge_data(data: dict, time_range: int, main_set: dict | None = None):
     return main_set
 
 
-def concat_to_weekdays(data_input):
+def concat_to_weekdays(data_input: dict) -> dict:
     tuple = sorted(data_input.items(), key=lambda x: x[0])
     for a, b in tuple:
         data_input.setdefault(a, b)
-    data = {
+    data: dict = {
         0: [],
         1: [],
         2: [],

@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from commit_concatenate.form_table import (empty_data, merge_data,
                                            DEFAULT_WEEK_RANGE,
@@ -14,9 +14,9 @@ from django.urls import reverse
 # from sql_app.database_access import get_db
 
 
-def show_home(request):
-    context = {}
-    print(request.session)
+def show_home(request: HttpRequest) -> HttpResponse:
+    context: dict = {}
+    # print(request.session)
 
     return render(request=request, template_name="home.html", context=context)
 
@@ -47,7 +47,7 @@ def show_home(request):
 #
 
 
-def get_github(request):
+def get_github(request: HttpRequest) -> HttpResponse:
     response = github_parcer.parse()
     dates = list(response.keys())
     for date in dates:
@@ -59,7 +59,7 @@ def get_github(request):
     return JsonResponse(response)
 
 
-def register(request):
+def register(request: HttpRequest) -> HttpResponse:
     if request.method == "GET":
         return render(request, "reg.html")
     else:
@@ -85,7 +85,7 @@ def register(request):
             return HttpResponseRedirect(reverse("index"))
 
 
-def login_form(request):
+def login_form(request: HttpRequest) -> HttpResponse:
     if request.method == "GET":
         return render(request, "login.html")
     else:
@@ -103,12 +103,12 @@ def login_form(request):
         return HttpResponseRedirect(reverse("index"))
 
 
-def logout_form(request):
+def logout_form(request: HttpRequest) -> HttpResponse:
     logout(request)
     return HttpResponseRedirect(reverse("index"))
 
 
-def form_table(github_id, time_range: int):
+def form_table(github_id: str | None, time_range: int) -> dict:
     if time_range == 0:
         time_range = DEFAULT_WEEK_RANGE
     # print(github_id)
@@ -124,11 +124,14 @@ def form_table(github_id, time_range: int):
     return data
 
 
-def show_table(request):
+def show_table(request: HttpRequest) -> HttpResponse:
+    context: dict = {}
     try:
-        context = {
-            "data": form_table(request.user.github_id, 0),
-        }
+        if request.user.is_authenticated:
+            context = {
+                    "data": form_table(
+                        request.user.github_id, 0), # type ignore:[union-attr]
+            }
         return render(
             request=request, template_name="grid.html", context=context
         )

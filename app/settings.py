@@ -89,17 +89,17 @@ DATABASES = {
 }
 
 
-@asynccontextmanager
-async def db_init():
-    await session_manager.create_db_and_tables()
-    yield
-    if session_manager.engine is not None:
-        await session_manager.close()
+# @asynccontextmanager
+# async def db_init():
+#     await session_manager.create_db_and_tables()
+#     yield
+#     if session_manager.engine is not None:
+#         await session_manager.close()
 
 
-DB_SESSION_MANAGER = session_manager
-session_manager.init("sqlite+aiosqlite:///db.sqlite3")
-db_init()
+# DB_SESSION_MANAGER = session_manager
+# session_manager.init("sqlite+aiosqlite:///db.sqlite3")
+# db_init()
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

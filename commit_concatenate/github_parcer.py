@@ -1,5 +1,5 @@
 from time import sleep
-from django.core.handlers.base import logging
+from django.core.handlers.base import logging # type: ignore[attr-defined]
 import requests
 import datetime
 import concurrent.futures
@@ -19,12 +19,13 @@ headers = {'Accept': 'application/vnd.github+json'}
 
 def parse_commit_date(
     URL: str, requests_session: requests.Session | None = None
-):
+) -> str:
     json = parse_page_response(
         URL=URL, user=None, page=None, request_session=requests_session
     )
     if isinstance(json, dict):
-        return json.get("commit", {}).get("author", {}).get("date")
+        parsed: str = json.get("commit", {}).get("author", {}).get("date")
+        return parsed
     else:
         logger.error(f"parse_page_response returned\
                          {type(json)} while resolving {URL}")
@@ -53,15 +54,15 @@ def get_data(
         for commit in tasks
     ]
     concurrent.futures.wait(dates_list)
-    result = {}
-    for date in dates_list:
-        date = git_to_datetime(str(date.result()))
-        if date is None:
+    result: dict = {}
+    for git_date in dates_list:
+        datetime_date = git_to_datetime(str(git_date.result()))
+        if datetime_date is None:
             continue
-        if date in result.keys():
-            result[date] += 1
+        if datetime_date in result.keys():
+            result[datetime_date] += 1
         else:
-            result[date] = 1
+            result[datetime_date] = 1
     return result
 
 
@@ -132,7 +133,7 @@ def parse_page_response(
     if response is None:
         return {}
     if response.status_code == 200:
-        return response.json()
+        return response.json() # type: ignore[no-any-return]
     else:
         print("Error", f"html status: {response.status_code}")
         raise Exception
@@ -144,8 +145,8 @@ def parse(user: str = DEFAULT_USER, URL: str = BASE_URL) -> dict:
     if response.status_code != 200:
         print("Error", f"html status: {response.status_code}")
         return {}
-    json = response.json()
-    data = {}
+    json: list = response.json()
+    data: dict = {}
     while len(json) > 0 and page < 2:
         if isinstance(json, list):
             print(type(json))

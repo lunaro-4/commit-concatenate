@@ -1,4 +1,5 @@
 import os
+from typing import Generator
 import pytest
 import datetime
 import requests
@@ -14,7 +15,7 @@ from commit_concatenate.github_parcer import (get_data,
                                               git_to_datetime,
                                               merge_dicts)
 
-from tests.consts import (links_list, page_response)
+from .consts import (links_list, page_response)
 
 
 from requests_testadapter import Resp
@@ -26,7 +27,7 @@ TEST_COMMIT_2_URL = os.path.join(TEST_FILE_FOLDER, "commit2.json")
 
 
 class LocalFileAdapter(requests.adapters.HTTPAdapter):
-    def build_response_from_file(self, request):
+    def build_response_from_file(self, request) -> requests.Response:
         file_path = request.url[7:]
         with open(file_path, "rb") as file:
             buff = bytearray(os.path.getsize(file_path))
@@ -44,12 +45,12 @@ class LocalFileAdapter(requests.adapters.HTTPAdapter):
         verify=True,
         cert=None,
         proxies=None,
-    ):
+    ) -> requests.Response:
         return self.build_response_from_file(request)
 
 
 @pytest.fixture(autouse=True)
-def run_around_tests():
+def run_around_tests() -> Generator:
     requests_session = requests.session()
     requests_session.mount("file://", LocalFileAdapter())
     yield requests_session
