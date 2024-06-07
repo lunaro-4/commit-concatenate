@@ -1,0 +1,21 @@
+name: Pytest
+on: [push]
+
+jobs:
+  pytest:
+      runs-on: ubuntu-lastest
+      steps:
+        - name: Setup Python
+          uses: actions/setup-pyton@v4
+        - name: Checkout
+          uses: actions/checkout@v1
+        - name: Install dependencies
+          run: pip install pytest pytest-md
+        - uses: pavelzw/pytest-action@v2
+          with:
+            verbose: true
+            emoji: true
+            job-summary: true
+            custom-arguments: '-q'
+            click-to-expand: true
+            report-title: 'Test Report'
